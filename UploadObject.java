@@ -19,7 +19,7 @@ public class UploadObject {
         String fileObjKeyName = "*** File object key name ***";
         String fileName = "*** Path to file to upload ***";
 
-        try {
+        
             //This code expects that you have AWS credentials set up per:
             // https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html
             AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
@@ -36,11 +36,7 @@ public class UploadObject {
             metadata.addUserMetadata("x-amz-meta-title", "someTitle");
             request.setMetadata(metadata);
             s3Client.putObject(request);
-        } catch (SdkClientException e) {
-            // Amazon S3 couldn't be contacted for a response, or the client
-            // couldn't parse the response from Amazon S3.
-            e.printStackTrace();
-        }
+         
     }
 }
 
