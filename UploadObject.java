@@ -31,7 +31,7 @@ AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStat
             // Upload a file as a new object with ContentType and title specified.
             PutObjectRequest request = new PutObjectRequest(bucketName, fileObjKeyName, new File(fileName));
             ObjectMetadata metadata = new ObjectMetadata();
-          //  metadata.setContentType("plain/text");
+           metadata.setContentType("plain/text");
             metadata.addUserMetadata("x-amz-meta-title", "someTitle");
             request.setMetadata(metadata);
             s3Client.putObject(request);
