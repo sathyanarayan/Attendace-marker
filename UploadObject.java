@@ -22,9 +22,8 @@ public class UploadObject {
         
             //This code expects that you have AWS credentials set up per:
             // https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html
-            AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
-                    .withRegion(clientRegion)
-                    .build();
+            BasicAWSCredentials creds = new BasicAWSCredentials("AKIASLH77DNM7TFJOIPT", "5cTiK5meMxNN4U8qmvtaRQw98XYirwPx0OiHit56"); 
+AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(creds)).build(); 
 
             // Upload a text string as a new object.
             s3Client.putObject(bucketName, stringObjKeyName, "Uploaded String Object");
