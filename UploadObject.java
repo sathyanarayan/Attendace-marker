@@ -32,14 +32,10 @@ public class UploadObject {
             // Upload a file as a new object with ContentType and title specified.
             PutObjectRequest request = new PutObjectRequest(bucketName, fileObjKeyName, new File(fileName));
             ObjectMetadata metadata = new ObjectMetadata();
-            metadata.setContentType("plain/text");
+          //  metadata.setContentType("plain/text");
             metadata.addUserMetadata("x-amz-meta-title", "someTitle");
             request.setMetadata(metadata);
             s3Client.putObject(request);
-        } catch (AmazonServiceException e) {
-            // The call was transmitted successfully, but Amazon S3 couldn't process 
-            // it, so it returned an error response.
-            e.printStackTrace();
         } catch (SdkClientException e) {
             // Amazon S3 couldn't be contacted for a response, or the client
             // couldn't parse the response from Amazon S3.
